@@ -4,19 +4,18 @@ import br.com.finalcraft.finalconsolefilter.FinalConsoleFilter;
 import org.apache.commons.lang.Validate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class CFSettings {
 
-    public static List<Pattern> PATTERN_LIST = new ArrayList<>();
+    public static List<Pattern> HIDE_LIST = new ArrayList<>();
 
     public static void initialize(){
 
-        synchronized (PATTERN_LIST){
-            PATTERN_LIST.clear();
+        synchronized (HIDE_LIST){
+            HIDE_LIST.clear();
         }
 
         List<Pattern> NEW_PATTERN_LIST = new ArrayList<>();
@@ -40,18 +39,18 @@ public class CFSettings {
             }
         }
 
-        synchronized (PATTERN_LIST){
-            PATTERN_LIST = NEW_PATTERN_LIST;
+        synchronized (HIDE_LIST){
+            HIDE_LIST = NEW_PATTERN_LIST;
         }
     }
 
     public static void save(){
-        ConfigManager.getMainConfig().setValue("HidePatterns.RegexList", PATTERN_LIST.stream().map(Pattern::pattern).collect(Collectors.toList()));
+        ConfigManager.getMainConfig().setValue("HidePatterns.RegexList", HIDE_LIST.stream().map(Pattern::pattern).collect(Collectors.toList()));
         ConfigManager.getMainConfig().save();
     }
 
     public static boolean shouldBlockMessage(String message){
-        for (Pattern pattern : PATTERN_LIST) {
+        for (Pattern pattern : HIDE_LIST) {
             if (pattern.matcher(message).matches()){
                 return true;
             }

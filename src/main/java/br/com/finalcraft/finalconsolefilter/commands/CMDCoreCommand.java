@@ -40,8 +40,8 @@ public class CMDCoreCommand {
                 .addPlaceholder("%regex%",regex)
                 .send(sender);
 
-        if (!CFSettings.PATTERN_LIST.stream().filter(pattern1 -> pattern1.pattern().equals(pattern.pattern())).findAny().isPresent()){ //Check if this pattern already exist
-            CFSettings.PATTERN_LIST.add(pattern);
+        if (!CFSettings.HIDE_LIST.stream().filter(pattern1 -> pattern1.pattern().equals(pattern.pattern())).findAny().isPresent()){ //Check if this pattern already exist
+            CFSettings.HIDE_LIST.add(pattern);
             CFSettings.save();
         }
     }
@@ -62,7 +62,7 @@ public class CMDCoreCommand {
         regex = argumentos.joinStringArgs(1);
 
         Pattern toRemove = null;
-        for (Pattern pattern : CFSettings.PATTERN_LIST) {
+        for (Pattern pattern : CFSettings.HIDE_LIST) {
             if (pattern.pattern().equalsIgnoreCase(regex)){
                 toRemove = pattern;
                 break;
@@ -80,7 +80,7 @@ public class CMDCoreCommand {
                 .addPlaceholder("%regex%", regex)
                 .send(sender);
 
-        CFSettings.PATTERN_LIST.remove(toRemove);
+        CFSettings.HIDE_LIST.remove(toRemove);
         CFSettings.save();
     }
 
@@ -94,7 +94,7 @@ public class CMDCoreCommand {
         FancyFormatter formatter = FancyFormatter.of(straightLine);
 
         int contador = 1;
-        for (Pattern pattern : CFSettings.PATTERN_LIST) {
+        for (Pattern pattern : CFSettings.HIDE_LIST) {
             formatter.append(
                     FancyText.of("\n§7  ♦  §eRegex" + (contador++) + " §c§d( ✖ ClickToRemove ✖ )")
                             .setHoverText("\n§cClique here to remove the Regex: \n\n§e" + pattern.pattern() + "\n")
