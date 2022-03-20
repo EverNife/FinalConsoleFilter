@@ -1,5 +1,9 @@
 [![Discord](https://img.shields.io/discord/899151012290498620.svg?label=discord&logo=discord)](https://discord.petrus.dev/)
 
+<p align="center">
+  <img src="icon/console-icon.png" />
+</p>
+
 # FinalConsoleFilter
 
 A plugin de that handles console filtering. This plugin can filter both Forge and Bukkit logs.
