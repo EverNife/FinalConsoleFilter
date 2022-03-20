@@ -1,5 +1,6 @@
 package br.com.finalcraft.finalconsolefilter;
 
+import br.com.finalcraft.evernifecore.autoupdater.SpigotUpdateChecker;
 import br.com.finalcraft.evernifecore.metrics.Metrics;
 import br.com.finalcraft.finalconsolefilter.commands.CommandRegisterer;
 import br.com.finalcraft.finalconsolefilter.config.ConfigManager;
@@ -35,8 +36,13 @@ public class FinalConsoleFilter extends JavaPlugin{
         info("§aApplying Filters...");
         ConsoleFilter.initialize();
 
-        info("§aEnable Metrics...");
-        new Metrics(this, 14682);
+        SpigotUpdateChecker.checkForUpdates(
+                this,
+                "100839", //FinalConsoleFilter SpigotID: 100839
+                ConfigManager.getMainConfig()
+        );
+
+        new Metrics(this, 14682); //14682 FinalConsoleFilter BStats
     }
 
 }
