@@ -6,7 +6,7 @@
 
 # FinalConsoleFilter
 
-A plugin de that handles console filtering. This plugin can filter both Forge and Bukkit logs.
+A plugin de that handles console filtering. This plugin can hide configured messages or errors from server console and logs.
 
 ### Requirements
 
@@ -25,17 +25,26 @@ config.yml
 
 
 HidePatterns:
+  ContainsList:
+  - 'abra cadabra'
+  - '/tpa'
   RegexList:
-  - '.*(?i)abra CaDaBra(?-i).*'
+  - '.*11.*12.*'
 ```
 
-The above example would hide any log line that matches de regex `.*(?i)abra CaDaBra(?-i).*`, in this case, any line that contains the phrase **abra cadabra** *(ignoreCase)*
+The above example would hide 3 types of lines.
+1- Hide Any line that contains the phrase **abra cadabra** *(ignoreCase)*
+2- Hide Any line that contains the phrase **/tpa** *(ignoreCase)*
+3- Hide Any line that contains the numbers **11**%ANYTHING_BETWEEN_THAN%**12** *(ignoreCase)*
+
+The RegexList is intended for more experienced users, if you are not one of them, use only the "ContainsList", its easy and simple!
 
 You can also manage these rules using the commands bellow:
 
 ```
-/finalconsolefilter add <regex>
-/finalconsolefilter remove <regex>
+/finalconsolefilter add <text>
+/finalconsolefilter addRegex <regex>
+/finalconsolefilter remove <text|regex>
 /finalconsolefilter list
 /finalconsolefilter reload
 ```
