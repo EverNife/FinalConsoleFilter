@@ -35,7 +35,7 @@ HidePatterns:
 The above example would hide 3 types of lines.
  - ***1:*** Hide Any line that contains the phrase **abra cadabra** *(ignoreCase)*
  - ***2:*** Hide Any line that contains the phrase **/tpa** *(ignoreCase)*
- - ***3:*** Hide Any line that contains the numbers **11**%ANYTHING_BETWEEN_THAN%**12** *(ignoreCase)*
+ - ***3:*** Hide Any line that contains the numbers **11**%ANYTHING_BETWEEN_THEM%**12** *(ignoreCase)*
 
 The RegexList is intended for more experienced users, if you are not one of them, use only the "ContainsList", its easy and simple!
 
