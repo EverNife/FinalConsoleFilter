@@ -1,12 +1,15 @@
 package br.com.finalcraft.finalconsolefilter;
 
-import br.com.finalcraft.evernifecore.autoupdater.SpigotUpdateChecker;
-import br.com.finalcraft.evernifecore.metrics.Metrics;
+import br.com.finalcraft.evernifecore.ecplugin.annotations.ECPlugin;
 import br.com.finalcraft.finalconsolefilter.commands.CommandRegisterer;
 import br.com.finalcraft.finalconsolefilter.config.ConfigManager;
 import br.com.finalcraft.finalconsolefilter.consolefilter.ConsoleFilter;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@ECPlugin(
+        bstatsID = "14682",
+        spigotID = "100839"
+)
 public class FinalConsoleFilter extends JavaPlugin{
 
     public static FinalConsoleFilter instance;
@@ -35,14 +38,6 @@ public class FinalConsoleFilter extends JavaPlugin{
 
         info("§aApplying Filters...");
         ConsoleFilter.initialize();
-
-        SpigotUpdateChecker.checkForUpdates(
-                this,
-                "100839", //FinalConsoleFilter SpigotID: 100839
-                ConfigManager.getMainConfig()
-        );
-
-        new Metrics(this, 14682); //14682 FinalConsoleFilter BStats
     }
 
 }

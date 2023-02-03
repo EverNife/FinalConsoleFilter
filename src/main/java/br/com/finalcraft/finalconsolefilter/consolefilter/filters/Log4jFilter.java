@@ -1,7 +1,6 @@
 package br.com.finalcraft.finalconsolefilter.consolefilter.filters;
 
-import br.com.finalcraft.evernifecore.util.FCBukkitUtil;
-import br.com.finalcraft.evernifecore.util.ReflectionUtil;
+import br.com.finalcraft.evernifecore.util.FCReflectionUtil;
 import br.com.finalcraft.evernifecore.version.MCVersion;
 import br.com.finalcraft.finalconsolefilter.FinalConsoleFilter;
 import br.com.finalcraft.finalconsolefilter.config.CFSettings;
@@ -31,10 +30,10 @@ public class Log4jFilter implements Filter {
 
 	public static void applyFilter() {
 		((Logger) LogManager.getRootLogger()).addFilter(new Log4jFilter());
-		if (MCVersion.isBellow1_7_10() && FCBukkitUtil.isClassLoaded("net.minecraft.server.MinecraftServer")){
+		if (MCVersion.isEqual(MCVersion.v1_7_10) && FCReflectionUtil.isClassLoaded("net.minecraft.server.MinecraftServer")){
 			Logger newLogger = (Logger) LogManager.getLogger("FinalConsoleFilter");
 			try {
-				Class clazz_MinecraftServer = ReflectionUtil.getClass("net.minecraft.server.MinecraftServer");
+				Class clazz_MinecraftServer = FCReflectionUtil.getClass("net.minecraft.server.MinecraftServer");
 				Field theField = clazz_MinecraftServer.getDeclaredField("field_147145_h");
 				theField.setAccessible(true);
 
