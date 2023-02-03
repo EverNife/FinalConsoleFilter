@@ -3,3 +3,4 @@ version: 1.0.6
 author: EverNife
 main: br.com.finalcraft.finalconsolefilter.FinalConsoleFilter
 depend: [ EverNifeCore ]
+api-version: 1.13
