@@ -1,6 +1,7 @@
 package br.com.finalcraft.finalconsolefilter;
 
 import br.com.finalcraft.evernifecore.ecplugin.annotations.ECPlugin;
+import br.com.finalcraft.evernifecore.logger.ECLogger;
 import br.com.finalcraft.finalconsolefilter.commands.CommandRegisterer;
 import br.com.finalcraft.finalconsolefilter.config.ConfigManager;
 import br.com.finalcraft.finalconsolefilter.consolefilter.ConsoleFilter;
@@ -14,29 +15,23 @@ public class FinalConsoleFilter extends JavaPlugin{
 
     public static FinalConsoleFilter instance;
 
-    public static void info(String msg){
-        instance.getLogger().info("[Info] " + msg);
-    }
+    private final ECLogger ecLogger = new ECLogger(this);
 
-    public static void debug(String msg){
-        instance.getLogger().info("[Debug] " + msg);
-    }
-
-    public static void warning(String msg){
-        instance.getLogger().info("[Warning] " + msg);
+    public static ECLogger getLog() {
+        return instance.ecLogger;
     }
 
     @Override
     public void onEnable() {
         instance = this;
 
-        info("§aLoading Configuration...");
+        getLog().info("§aLoading Configuration...");
         ConfigManager.initialize(this);
 
-        info("§aRegistering Commands...");
+        getLog().info("§aRegistering Commands...");
         CommandRegisterer.registerCommands(this);
 
-        info("§aApplying Filters...");
+        getLog().info("§aApplying Filters...");
         ConsoleFilter.initialize();
     }
 

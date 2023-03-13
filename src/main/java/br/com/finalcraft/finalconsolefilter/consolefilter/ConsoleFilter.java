@@ -8,11 +8,11 @@ import br.com.finalcraft.finalconsolefilter.consolefilter.filters.SystemFilter;
 public class ConsoleFilter {
 
     public static void initialize(){
-        FinalConsoleFilter.info("Applying JavaFilter");
+        FinalConsoleFilter.getLog().info("Applying JavaFilter");
         JavaFilter.applyFilter();
-        FinalConsoleFilter.info("Applying Log4jFilter");
+        FinalConsoleFilter.getLog().info("Applying Log4jFilter");
         Log4jFilter.applyFilter();
-        FinalConsoleFilter.info("Applying SystemFilter");
+        FinalConsoleFilter.getLog().info("Applying SystemFilter");
         SystemFilter.applyFilter();
     }
 

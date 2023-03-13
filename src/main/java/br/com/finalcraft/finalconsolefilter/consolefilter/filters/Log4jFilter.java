@@ -57,7 +57,7 @@ public class Log4jFilter implements Filter {
 
 				//In fact change the field
 				theField.set(null, newLogger);
-				FinalConsoleFilter.info("Replacing DEFAULT LOGGER 'net.minecraft.server.MinecraftServer' field_147145_h");
+				FinalConsoleFilter.getLog().info("Replacing DEFAULT LOGGER 'net.minecraft.server.MinecraftServer' field_147145_h");
 			}catch (Exception e){
 				e.printStackTrace();
 			}

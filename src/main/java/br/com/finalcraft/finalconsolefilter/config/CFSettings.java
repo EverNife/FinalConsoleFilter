@@ -32,10 +32,10 @@ public class CFSettings {
         for (String text : ConfigManager.getMainConfig().getStringList("HidePatterns.ContainsList")) {
             try {
                 Validate.isTrue(!text.isEmpty(), "TextContains cannot be Empty");
-                FinalConsoleFilter.info("Adding Console Filter TextContains [" + text + "]");
+                FinalConsoleFilter.getLog().info("Adding Console Filter TextContains [" + text + "]");
                 NEW_CONTAINS_LIST.add(text.toLowerCase());
             }catch (IllegalArgumentException e){
-                FinalConsoleFilter.warning("Failed to load TextContains [" + text + "]");
+                FinalConsoleFilter.getLog().warning("Failed to load TextContains [" + text + "]");
                 e.printStackTrace();
             }
         }
@@ -46,10 +46,10 @@ public class CFSettings {
             try {
                 Validate.isTrue(!regex.isEmpty(), "Regex cannot be Empty");
                 Pattern pattern = Pattern.compile(regex);
-                FinalConsoleFilter.info("Adding Console Filter Regex [" + pattern.pattern() + "]");
+                FinalConsoleFilter.getLog().info("Adding Console Filter Regex [" + pattern.pattern() + "]");
                 NEW_REGEX_LIST.add(pattern);
             }catch (Throwable e){
-                FinalConsoleFilter.warning("Failed to load regex [" + regex + "]");
+                FinalConsoleFilter.getLog().warning("Failed to load regex [" + regex + "]");
                 e.printStackTrace();
             }
         }
