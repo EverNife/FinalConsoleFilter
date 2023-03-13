@@ -62,6 +62,8 @@ public class CFSettings {
         synchronized (CFSettings.CONTAINS_LIST){
             CFSettings.CONTAINS_LIST = NEW_CONTAINS_LIST;
         }
+
+        ConfigManager.getMainConfig().saveIfNewDefaults();
     }
 
     public static void save(){
