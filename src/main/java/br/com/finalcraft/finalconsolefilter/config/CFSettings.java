@@ -24,7 +24,13 @@ public class CFSettings {
             CONTAINS_LIST.clear();
         }
 
-        ConfigManager.getMainConfig().setDefaultValue("HidePatterns.ContainsList", Arrays.asList("abra cadabra"));
+        ConfigManager.getMainConfig().setDefaultValue("HidePatterns.ContainsList", new ArrayList<>(
+                Arrays.asList(
+                        "abra cadabra",
+                        "issued server command: /cmapi",
+                        "issued server command: /ecdcmd"
+                )
+        ));
         ConfigManager.getMainConfig().setDefaultValue("HidePatterns.RegexList", new ArrayList<>());
 
         //Loading ContainsRules
